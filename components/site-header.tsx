@@ -46,6 +46,7 @@ export function SiteHeader() {
           <SheetTrigger
             render={
               <Button
+                nativeButton={false}
                 variant="ghost"
                 size="icon"
                 className="menu-button h-11 w-11 rounded-none text-[var(--ink)] hover:bg-transparent"
@@ -53,6 +54,8 @@ export function SiteHeader() {
               />
             }
           >
+            <Menu size={22} />
+          </SheetTrigger>
             <Menu size={22} />
           </SheetTrigger>
           <SheetContent
@@ -70,6 +73,7 @@ export function SiteHeader() {
               <SheetClose
                 render={
                   <Button
+                    nativeButton={false}
                     variant="ghost"
                     size="icon"
                     className="h-11 w-11 rounded-none text-[var(--paper)] hover:bg-transparent"
@@ -84,6 +88,7 @@ export function SiteHeader() {
               {nav.map((item) => (
                 <SheetClose
                   key={item.href}
+                  nativeButton={false}
                   render={<Link href={item.href} className="mobile-nav-link" />}
                 >
                   <span>{item.label}</span>
