@@ -56,8 +56,6 @@ export function SiteHeader() {
           >
             <Menu size={22} />
           </SheetTrigger>
-            <Menu size={22} />
-          </SheetTrigger>
           <SheetContent
             side="top"
             showCloseButton={false}

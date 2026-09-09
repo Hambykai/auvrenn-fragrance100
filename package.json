@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1 --port 43145",
     "build": "next build",
-    "start": "next start --hostname 127.0.0.1 --port 43145",
+    "start": "npx serve out --listen 43145",
+    "deploy": "next build && npx wrangler deploy",
     "lint": "eslint"
   },
   "dependencies": {
