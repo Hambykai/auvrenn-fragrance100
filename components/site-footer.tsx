@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { ReleaseForm } from "@/components/release-form";
-import { nav, site } from "@/lib/site";
+import { debut, nav, site, statusLabel } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -29,11 +29,14 @@ export function SiteFooter() {
         <div className="footer-links">
           <div>
             <span>Explore</span>
-            {nav.slice(0, 4).map((item) => (
-              <Link key={item.href} href={item.href}>
-                {item.label}
-              </Link>
-            ))}
+            <Link href="/">Home</Link>
+            {nav
+              .filter((item) => item.href !== "/contact")
+              .map((item) => (
+                <Link key={item.href} href={item.href}>
+                  {item.label}
+                </Link>
+              ))}
           </div>
           <div>
             <span>Assistance</span>
@@ -56,7 +59,9 @@ export function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <span>© 2026 {site.name}</span>
-        <span>Debut / Coming soon</span>
+        <span>
+          Debut / {statusLabel(debut.status)}
+        </span>
       </div>
     </footer>
   );

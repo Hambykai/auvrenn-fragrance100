@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { CoverImage } from "@/components/cover-image";
 import { EditorialLink } from "@/components/editorial-link";
-import { images } from "@/lib/site";
+import { debut } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Our Story",
+  title: "Story",
 };
 
 export default function StoryPage() {
@@ -20,7 +20,7 @@ export default function StoryPage() {
           </h1>
         </div>
         <CoverImage
-          src={images.studio}
+          src={debut.images.studio}
           alt="Auvrenn’s modern independent fragrance studio"
           className="story-opening-image"
           priority
@@ -81,8 +81,8 @@ export default function StoryPage() {
 
       <section className="atelier-section section-pad">
         <CoverImage
-          src={images.materials}
-          alt="A clean Auvrenn studio table with fragrance prototype"
+          src={debut.images.alcove}
+          alt={`${debut.name} by Auvrenn, the house bottle`}
           className="atelier-image"
           sizes="(max-width: 1000px) 100vw, 50vw"
         />
@@ -94,9 +94,9 @@ export default function StoryPage() {
             Made to last
           </h2>
           <p>
-            Terra is in final development. We are refining the formula, testing
-            the complete presentation, and building a release experience that
-            feels as considered as the fragrance itself.
+            {debut.name} is in final development. We are refining the formula,
+            testing the complete presentation, and building a release experience
+            that feels as considered as the fragrance itself.
           </p>
           <p>
             Our debut bottle is deliberately architectural: clear glass, a quiet

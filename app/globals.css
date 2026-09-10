@@ -1353,8 +1353,10 @@
 }
 
 .future-image {
-  height: 62vw;
-  min-height: 240px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  min-height: 200px;
   margin-bottom: 48px;
 }
 
@@ -1714,7 +1716,8 @@
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: clamp(20px, 2.7vw, 46px);
+    justify-self: center;
+    gap: clamp(28px, 3vw, 48px);
   }
 
   .menu-button {
@@ -1991,8 +1994,9 @@
   }
 
   .future-image {
-    height: min(54vw, 720px);
-    min-height: 440px;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
   }
 
   .page-hero-copy {

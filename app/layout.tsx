@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { site } from "@/lib/site";
+import { debut, site } from "@/lib/site";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -21,16 +21,18 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: "Terra by Auvrenn — Coming Soon",
+    default: `${debut.name} by Auvrenn — Coming Soon`,
     template: "%s — Auvrenn",
   },
   description: site.description,
   applicationName: "Auvrenn",
   openGraph: {
-    title: "Terra by Auvrenn",
-    description: "One fragrance worth remembering. Join the Terra debut release list.",
-    images: [{ url: "/images/auvrenn-bottle.webp" }],
+    title: `${debut.name} by Auvrenn`,
+    description:
+      "One fragrance worth remembering. Join the Terra debut release list.",
+    images: [{ url: debut.images.bottle }],
   },
 };
 

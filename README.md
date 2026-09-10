@@ -1,6 +1,8 @@
 # Auvrenn
 
-Independent fragrance house site for **Terra**. You do **not** need Vercel. Emails go out through a Cloudflare Worker (the same host as auvrenn.com) using Resend.
+Independent fragrance house site for **Terra**, the debut 75 ml Eau de Parfum. Professional, simple to navigate, and ready for the next scent when you are.
+
+You do **not** need Vercel. Emails go out through a Cloudflare Worker (the same host as [auvrenn.com](https://auvrenn.com)) using Resend.
 
 ## Run locally
 
@@ -11,6 +13,27 @@ npm run dev
 ```
 
 Open [http://127.0.0.1:43145](http://127.0.0.1:43145).
+
+## Pages
+
+- `/` — debut home
+- `/fragrance` — Terra
+- `/story` — the house
+- `/shop` — waitlist
+- `/faq` — release questions
+- `/contact` — studio correspondence
+
+Primary navigation is four links: Terra, Story, Shop, Contact. FAQ lives in the footer.
+
+## Adding a new scent
+
+All product copy and photography are in `lib/site.ts`.
+
+1. Add a new object to `releases` (name, notes, images, `status`).
+2. Put bottle photography in `public/images/` using the same Auvrenn bottle.
+3. Set `status` to `"coming-soon"` for a waitlist, or `"live"` when you are ready to sell.
+
+Until a chapter is named, keep it in `reservedReleases`. Home, Shop, and the header status read from this file so you do not have to redesign the site.
 
 ## Email (Resend + Cloudflare)
 
@@ -34,16 +57,7 @@ npx wrangler secret put RESEND_API_KEY
 npm run deploy
 ```
 
-`RESEND_TO` and `RESEND_FROM` are in `wrangler.json`. Change them there if you want a different inbox.
-
-## Pages
-
-- `/` — debut home
-- `/fragrance` — Terra composition
-- `/story` — the house
-- `/shop` — 75 ml waitlist
-- `/faq` — release questions
-- `/contact` — studio correspondence
+`RESEND_TO` and `RESEND_FROM` are in `wrangler.json`.
 
 ## Stack
 

@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
 import { CoverImage } from "@/components/cover-image";
-import { images } from "@/lib/site";
+import { debut } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "The Fragrance",
+  title: debut.name,
 };
 
 export default function FragrancePage() {
+  const { notes, images } = debut;
+
   return (
     <>
       <section className="page-hero fragrance-hero dark-section">
         <CoverImage
           src={images.campaign}
-          alt="Terra by Auvrenn in a modern light-filled space"
+          alt={`${debut.name} by Auvrenn in warm architectural light`}
           className="absolute inset-0 h-full w-full"
-          imageClassName="object-[61%_center]"
+          imageClassName="object-[68%_center]"
           priority
           sizes="100vw"
         />
@@ -22,7 +24,7 @@ export default function FragrancePage() {
         <div className="page-hero-copy">
           <p className="eyebrow">Single release · Coming soon</p>
           <h1>
-            Terra
+            {debut.name}
             <br />
             by Auvrenn
           </h1>
@@ -44,14 +46,9 @@ export default function FragrancePage() {
         </h2>
         <div className="two-column-copy">
           <p>
-            Terra opens with Bergamot and Mandarin—a dry luminous opening, cool
-            spice against clean, bright chips of citrus peel.
+            {debut.name} opens with {notes.top.title}—{notes.top.body.toLowerCase()}
           </p>
-          <p>
-            A radiant floral-resinous heart blends luminous neroli with airy
-            diffusion and modern warmth before polished wood and amber settle
-            close to skin.
-          </p>
+          <p>{notes.heart.body} {notes.base.body}</p>
         </div>
       </section>
 
@@ -68,28 +65,20 @@ export default function FragrancePage() {
           <div className="architecture-row">
             <span className="roman">I</span>
             <h3>Top notes</h3>
-            <p>Bergamot &amp; Mandarin</p>
-            <span>
-              A dry luminous opening, cool spice against clean, bright chips of
-              citrus peel.
-            </span>
+            <p>{notes.top.title}</p>
+            <span>{notes.top.body}</span>
           </div>
           <div className="architecture-row">
             <span className="roman">II</span>
             <h3>Heart notes</h3>
-            <p>Neroli &amp; Labdanum</p>
-            <span>
-              A radiant floral-resinous heart, blending luminous neroli with an
-              airy diffusion and modern warmth.
-            </span>
+            <p>{notes.heart.title}</p>
+            <span>{notes.heart.body}</span>
           </div>
           <div className="architecture-row">
             <span className="roman">III</span>
             <h3>Base notes</h3>
-            <p>Polished woods &amp; Amber</p>
-            <span>
-              A polished wood, amber resin, skin-resonant trace that stays close.
-            </span>
+            <p>{notes.base.title}</p>
+            <span>{notes.base.body}</span>
           </div>
         </div>
       </section>
@@ -110,7 +99,7 @@ export default function FragrancePage() {
             <div>
               <span>01</span>
               <p>
-                <strong>Brightness</strong> — Bergamot and Mandarin
+                <strong>Brightness</strong> — {notes.top.title}
               </p>
             </div>
             <div>
@@ -129,7 +118,7 @@ export default function FragrancePage() {
         </div>
         <CoverImage
           src={images.materials}
-          alt="The core materials behind Terra by Auvrenn"
+          alt={`The core materials behind ${debut.name} by Auvrenn`}
           className="ingredient-image"
           sizes="(max-width: 1000px) 100vw, 50vw"
         />
@@ -144,11 +133,11 @@ export default function FragrancePage() {
         </h2>
         <div className="wear-stats">
           <div>
-            <strong>01</strong>
+            <strong>{debut.number}</strong>
             <span>Flagship debut</span>
           </div>
           <div>
-            <strong>75 ml</strong>
+            <strong>{debut.volume}</strong>
             <span>Planned presentation</span>
           </div>
           <div>

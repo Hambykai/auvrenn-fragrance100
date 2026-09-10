@@ -13,7 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { nav, site } from "@/lib/site";
+import { debut, nav, site, statusLabel } from "@/lib/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -26,21 +26,25 @@ export function SiteHeader() {
       </Link>
 
       <nav className="desktop-nav" aria-label="Primary">
-        {nav.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={pathname === item.href ? "nav-link active" : "nav-link"}
-          >
-            {item.label}
-          </Link>
-        ))}
+        {nav.map((item) => {
+          const active =
+            pathname === item.href || pathname.startsWith(`${item.href}/`);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={active ? "nav-link active" : "nav-link"}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
 
       <div className="header-actions">
         <span className="release-status">
           <span className="status-dot" aria-hidden />
-          Coming soon
+          {statusLabel(debut.status)}
         </span>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger

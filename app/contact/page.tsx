@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { CoverImage } from "@/components/cover-image";
-import { images, site } from "@/lib/site";
+import { debut, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -34,8 +34,8 @@ export default function ContactPage() {
       </section>
       <section className="contact-editorial">
         <CoverImage
-          src={images.studio}
-          alt="Auvrenn’s modern fragrance development studio"
+          src={debut.images.alcove}
+          alt={`${debut.name} by Auvrenn`}
           className="contact-editorial-image"
           sizes="(max-width: 1000px) 100vw, 65vw"
         />

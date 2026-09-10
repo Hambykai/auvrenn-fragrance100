@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EditorialLink } from "@/components/editorial-link";
+import { debut } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -11,8 +12,8 @@ const groups = [
     items: [
       {
         n: "01",
-        q: "How would you describe Terra?",
-        a: "Terra is an earthy, grounded woody amber fragrance with Bergamot and Mandarin at the top, a radiant floral-resinous heart, and a polished wood and amber base that stays close to skin. It is designed to feel distinctive without becoming overpowering.",
+        q: `How would you describe ${debut.name}?`,
+        a: `${debut.name} is an earthy, grounded woody amber fragrance with ${debut.notes.top.title} at the top, a radiant floral-resinous heart, and a polished wood and amber base that stays close to skin. It is designed to feel distinctive without becoming overpowering.`,
       },
       {
         n: "02",
@@ -36,7 +37,7 @@ const groups = [
       },
       {
         n: "05",
-        q: "When will Terra launch?",
+        q: `When will ${debut.name} launch?`,
         a: "The target debut window is 2026. Join the release list to receive the confirmed date and first-access details.",
       },
       {
@@ -74,7 +75,9 @@ export default function FaqPage() {
       <header className="simple-page-head">
         <p className="eyebrow">Questions</p>
         <h1>Good to know</h1>
-        <p>Current details on Terra, release timing, and the Auvrenn house.</p>
+        <p>
+          Current details on {debut.name}, release timing, and the Auvrenn house.
+        </p>
       </header>
       <section className="faq-section">
         {groups.map((group) => (
