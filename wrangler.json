@@ -1,9 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "auvrenn-fragrance",
+  "main": "worker.ts",
   "compatibility_date": "2026-09-08",
   "assets": {
     "directory": "./out",
+    "binding": "ASSETS",
     "not_found_handling": "single-page-application"
+  },
+  "vars": {
+    "RESEND_TO": "hambykair@gmail.com",
+    "RESEND_FROM": "Auvrenn <hello@auvrenn.com>"
   }
 }

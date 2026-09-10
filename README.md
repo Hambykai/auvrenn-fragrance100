@@ -1,23 +1,22 @@
 # Auvrenn
 
-Independent fragrance house site for **Terra**, the debut 75 ml release. Mobile-first so the house, fragrance, shop waitlist, FAQ, and contact pages actually render and scroll on phones.
+Independent fragrance house site for **Terra**. You do **not** need Vercel. Emails go out through a Cloudflare Worker (the same host as auvrenn.com) using Resend.
 
 ## Run locally
 
 ```bash
 cp .env.example .env.local
-# set RESEND_API_KEY, RESEND_TO, and optionally RESEND_FROM
 npm install
 npm run dev
 ```
 
 Open [http://127.0.0.1:43145](http://127.0.0.1:43145).
 
-## Email (Resend)
+## Email (Resend + Cloudflare)
 
-Waitlist and contact submissions are posted to `/api/release-list` and `/api/contact`, then sent through Resend to `RESEND_TO`.
+Waitlist and contact posts go to `/api/release-list` and `/api/contact`. Locally, Next.js handles those. On auvrenn.com, the Cloudflare Worker in `worker.ts` sends them with Resend.
 
-`auvrenn.com` is already verified in Resend. Use:
+`auvrenn.com` is already verified in Resend. Set:
 
 ```
 RESEND_FROM="Auvrenn <hello@auvrenn.com>"
@@ -25,7 +24,17 @@ RESEND_TO=your-inbox@email.com
 RESEND_API_KEY=re_xxxxxxxxx
 ```
 
-Never commit `RESEND_API_KEY`. On Vercel, add the same variables in Project Settings → Environment Variables.
+Never commit `RESEND_API_KEY`.
+
+Deploy (from this folder, logged into Cloudflare):
+
+```bash
+npx wrangler login
+npx wrangler secret put RESEND_API_KEY
+npm run deploy
+```
+
+`RESEND_TO` and `RESEND_FROM` are in `wrangler.json`. Change them there if you want a different inbox.
 
 ## Pages
 
@@ -38,4 +47,4 @@ Never commit `RESEND_API_KEY`. On Vercel, add the same variables in Project Sett
 
 ## Stack
 
-Next.js, TypeScript, Tailwind CSS, shadcn/ui, and Resend.
+Next.js (static export), Cloudflare Worker, Resend, TypeScript, Tailwind CSS, shadcn/ui.

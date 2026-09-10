@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local scratch
 /agent-tools/
+
+# Cloudflare local secrets
+.dev.vars
