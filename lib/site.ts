@@ -14,7 +14,7 @@ export const site = {
   tagline: "One fragrance worth remembering.",
   description:
     "Terra by Auvrenn — an earthy, grounded debut fragrance from a new independent house. Coming soon.",
-  email: "hello@auvrenn.com",
+  email: "contact@auvrenn.com",
   instagram: "https://instagram.com/auvrenn",
   url: "https://auvrenn.com",
 } as const;

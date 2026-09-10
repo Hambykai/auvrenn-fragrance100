@@ -33,7 +33,7 @@ export async function sendOwnerEmail(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: env.RESEND_FROM || "Auvrenn <hello@auvrenn.com>",
+      from: env.RESEND_FROM || "Auvrenn <contact@auvrenn.com>",
       to: env.RESEND_TO || "hambykair@gmail.com",
       subject: input.subject,
       text: input.text,

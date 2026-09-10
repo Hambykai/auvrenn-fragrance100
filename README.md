@@ -42,7 +42,7 @@ Waitlist and contact posts go to `/api/release-list` and `/api/contact`. Locally
 `auvrenn.com` is already verified in Resend. Set:
 
 ```
-RESEND_FROM="Auvrenn <hello@auvrenn.com>"
+RESEND_FROM="Auvrenn <contact@auvrenn.com>"
 RESEND_TO=your-inbox@email.com
 RESEND_API_KEY=re_xxxxxxxxx
 ```
