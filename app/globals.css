@@ -700,6 +700,7 @@
 .newsletter-form {
   border-bottom: 1px solid currentColor;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -719,6 +720,10 @@
   color: #817b72;
 }
 
+.newsletter-form input[name="company"] {
+  display: none;
+}
+
 .newsletter-form button {
   color: inherit;
   background: transparent;
@@ -726,6 +731,23 @@
   min-height: 44px;
   min-width: 44px;
   padding: 10px 2px 10px 16px;
+}
+
+.form-error {
+  grid-column: 1 / -1;
+  color: #7f2424;
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.form-error.light {
+  color: #e7b4b4;
+}
+
+.newsletter-form .form-error {
+  flex-basis: 100%;
+  color: #e7b4b4;
 }
 
 .newsletter-note {

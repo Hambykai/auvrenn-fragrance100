@@ -14,10 +14,40 @@ const subjects = [
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
+    if (pending) return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setPending(true);
+    setError("");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: data.get("firstName"),
+          lastName: data.get("lastName"),
+          email: data.get("email"),
+          subject: data.get("subject"),
+          message: data.get("message"),
+          company: data.get("company"),
+        }),
+      });
+      const payload = (await response.json()) as { error?: string };
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not send this note.");
+      }
+      setSent(true);
+      form.reset();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not send this note.");
+    } finally {
+      setPending(false);
+    }
   }
 
   if (sent) {
@@ -73,11 +103,21 @@ export function ContactForm() {
         Your message
         <Textarea required name="message" rows={5} />
       </label>
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        className="sr-only"
+        aria-hidden
+      />
+      {error ? <p className="form-error light">{error}</p> : null}
       <Button
         type="submit"
+        disabled={pending}
         className="button button-light mt-4 h-13 min-h-13 w-full rounded-none text-[10px] tracking-[0.14em] uppercase"
       >
-        Send message
+        {pending ? "Sending…" : "Send message"}
       </Button>
     </form>
   );
